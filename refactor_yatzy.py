@@ -1,67 +1,46 @@
 class Yatzy:
+    @staticmethod
+    def oneList(d1, d2, d3, d4, d5):
+        diceList = [d1, d2, d3, d4, d5]
+        return diceList
 
     @staticmethod
-    def chance(d1, d2, d3, d4, d5):
+    def chance(diceList):
         total = 0
-        total += d1 + d2 + d3 + d4 + d5
+        for dice in diceList:
+            total += dice
         return total
 
     @staticmethod
-    def yatzy(dice):
-        counts = [0]*(len(dice)+1)
-        for die in dice:
-            counts[die-1] += 1
-        for i in range(len(counts)):
-            if counts[i] == 5:
-                return 50
-        return 0
+    def yatzy(diceList):
+        if diceList.count(diceList[0]) != 5:
+            return 0
+        return 50
     
     @staticmethod
-    def ones( d1,  d2,  d3,  d4,  d5):
+    def ones(diceList):
         sum = 0
-        if (d1 == 1):
-            sum += 1
-        if (d2 == 1):
-            sum += 1
-        if (d3 == 1):
-            sum += 1
-        if (d4 == 1):
-            sum += 1
-        if (d5 == 1): 
-            sum += 1
-
+        for dice in diceList:
+            if dice == 1:
+                sum += 1
         return sum
     
 
     @staticmethod
-    def twos( d1,  d2,  d3,  d4,  d5):
+    def twos(diceList):
         sum = 0
-        if (d1 == 2):
-             sum += 2
-        if (d2 == 2):
-             sum += 2
-        if (d3 == 2):
-             sum += 2
-        if (d4 == 2):
-             sum += 2
-        if (d5 == 2):
-             sum += 2
+        for dice in diceList:
+            if dice == 2:
+                sum += 2
         return sum
     
     @staticmethod
-    def threes( d1,  d2,  d3,  d4,  d5):
-        s = 0
-        if (d1 == 3):
-             s += 3
-        if (d2 == 3):
-             s += 3
-        if (d3 == 3):
-             s += 3
-        if (d4 == 3):
-             s += 3
-        if (d5 == 3):
-             s += 3
-        return s
+    def threes(diceList):
+        sum = 0
+        for dice in diceList:
+            if dice == 3:
+                sum += 3
+        return sum
     
 
     def __init__(self, d1, d2, d3, d4, _5):
