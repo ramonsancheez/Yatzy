@@ -2,6 +2,11 @@ from refactor_yatzy import Yatzy
 import pytest
 
 @pytest.mark.Yatzy
+def list_of_dices():
+        assert [1,2,3,4,5] == Yatzy.oneList([1,2,3,4,5])
+        assert [2,2,3,3,5] == Yatzy.oneList([2,2,3,3,5])
+
+@pytest.mark.Yatzy
 def test_chance_scores_sum_of_all_dice():
         assert 9 == Yatzy.chance([1,3,2,1,2])
         assert 11 == Yatzy.chance([3,4,1,1,2])
