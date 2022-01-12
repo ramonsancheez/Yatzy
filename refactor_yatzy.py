@@ -1,4 +1,3 @@
-
 class Yatzy:
     ONE, TWO, THREE, FOUR, FIVE, SIX = 1, 2, 3, 4, 5, 6
 
@@ -117,8 +116,13 @@ class Yatzy:
     
     @staticmethod
     def fullHouse(diceList):
+        flag = False
         for dice in diceList:
             if diceList.count(dice) == Yatzy.THREE:
-                for otherDice in diceList:
-                    if diceList.count(otherDice) == Yatzy.TWO and otherDice != dice:
+                flag = True
+                break
+        for otherDice in diceList:
+            if flag and diceList.count(otherDice) == Yatzy.TWO:
+                    points = dice * Yatzy.THREE + otherDice * Yatzy.TWO
+                    return points
         return 0
