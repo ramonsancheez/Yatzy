@@ -121,13 +121,10 @@ class Yatzy:
     
     @staticmethod
     def fullHouse(diceList):
-        x = 0
         for dice in diceList:
-            if diceList.count(diceList[x]) == 3:
-                j = 0
+            if diceList.count(dice) == 3:
                 for dice1 in diceList:
-                    if diceList.count(diceList[j]) == 2 and dice1 != dice:
+                    if diceList.count(dice1) == 2 and dice1 != dice:
                         return (dice * 3 + dice1 * 2)
-                    j += 1
-            x += 1
         return 0
+    fullHouse([4,4,3,3,3])
