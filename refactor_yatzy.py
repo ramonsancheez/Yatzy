@@ -90,11 +90,9 @@ class Yatzy:
 
     @staticmethod
     def three_of_a_kind(diceList):
-        x = 0
         for dice in diceList:
-            if diceList.count(diceList[x]) >= 3:
+            if diceList.count(dice) >= 3:
                 return(dice * 3)
-            x += 1
         return 0
     
     @staticmethod
@@ -127,4 +125,3 @@ class Yatzy:
                     if diceList.count(dice1) == 2 and dice1 != dice:
                         return (dice * 3 + dice1 * 2)
         return 0
-    fullHouse([4,4,3,3,3])
