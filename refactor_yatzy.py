@@ -123,6 +123,5 @@ class Yatzy:
                 break
         for otherDice in diceList:
             if flag and diceList.count(otherDice) == Yatzy.TWO:
-                    points = dice * Yatzy.THREE + otherDice * Yatzy.TWO
-                    return points
+                    return (dice * Yatzy.THREE + otherDice * Yatzy.TWO)
         return 0
