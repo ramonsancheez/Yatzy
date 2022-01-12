@@ -1,5 +1,6 @@
 import collections
 ONE, TWO, THREE, FOUR, FIVE, SIX = 1, 2, 3, 4, 5, 6
+
 class Yatzy:
     @staticmethod
     def oneList(d1, d2, d3, d4, d5):
@@ -8,86 +9,84 @@ class Yatzy:
 
     @staticmethod
     def chance(diceList):
-        total = 0
+        points = 0
         for dice in diceList:
-            total += dice
-        return total
+            points += dice
+        return points
 
     @staticmethod
     def yatzy(diceList):
         if diceList.count(diceList[0]) != FIVE:
             return 0
         return 50
-    
+
     @staticmethod
     def ones(diceList):
-        sum = 0
+        points = 0
         for dice in diceList:
             if dice == ONE:
-                sum += ONE
-        return sum
+                points += ONE
+        return points
     
     @staticmethod
     def twos(diceList):
-        sum = 0
+        points = 0
         for dice in diceList:
             if dice == TWO:
-                sum += TWO
-        return sum
+                points += TWO
+        return points
     
     @staticmethod
     def threes(diceList):
-        sum = 0
+        points = 0
         for dice in diceList:
             if dice == THREE:
-                sum += THREE
-        return sum
+                points += THREE
+        return points
     
     @staticmethod
     def fours(diceList):
-        sum = 0
+        points = 0
         for dice in diceList:
             if dice == FOUR:
-                sum += FOUR
-        return sum
+                points += FOUR
+        return points
     
     @staticmethod
     def fives(diceList):
-        sum = 0
+        points = 0
         for dice in diceList:
             if dice == FIVE:
-                sum += FIVE
-        return sum
+                points += FIVE
+        return points
     
     @staticmethod
     def sixes(diceList):
-        sum = 0
+        points = 0
         for dice in diceList:
             if dice == SIX:
-                sum += SIX
-        return sum
+                points += SIX
+        return points
 
     @staticmethod
     def score_pair(diceList):
-        numbersDice = [6,5,4,3,2,1]
-        for num in numbersDice:
+        for num in range(6,0,-1):
             if diceList.count(num) >= TWO:
                 return num * TWO
         return 0
             
     @staticmethod
     def two_pair(diceList):
-        numbersDice = [6,5,4,3,2,1]
-        sum = 0
-        total = 0
-        for num in numbersDice:
+        points = 0
+        counter = 0
+        for num in range(6,0,-1):
             if diceList.count(num) >= TWO:
-                sum += num * TWO
-                total += ONE
-            elif total == TWO:
-                return sum
+                points += num * TWO
+                counter += ONE
+            elif counter == TWO:
+                return points
         return 0
-
+    
     @staticmethod
     def three_of_a_kind(diceList):
         for dice in diceList:
@@ -105,15 +104,13 @@ class Yatzy:
 
     @staticmethod
     def smallStraight(diceList):
-        rightList = [1,2,3,4,5]
-        if collections.Counter(diceList) == collections.Counter(rightList):
+        if collections.Counter(diceList) == collections.Counter(range(1,6)):
             return 15
         return 0
 
     @staticmethod
     def largeStraight(diceList):
-        rightList = [2,3,4,5,6]
-        if collections.Counter(diceList) == collections.Counter(rightList):
+        if collections.Counter(diceList) == collections.Counter(range(2,7)):
             return 20
         return 0
     
@@ -121,7 +118,7 @@ class Yatzy:
     def fullHouse(diceList):
         for dice in diceList:
             if diceList.count(dice) == THREE:
-                for dice1 in diceList:
-                    if diceList.count(dice1) == TWO and dice1 != dice:
-                        return (dice * THREE + dice1 * TWO)
+                for otherDice in diceList:
+                    if diceList.count(otherDice) == TWO and otherDice != dice:
+                        return (dice * THREE + otherDice * TWO)
         return 0
