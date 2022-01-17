@@ -3,125 +3,126 @@ class Yatzy:
 
     @staticmethod
     def oneList(d1, d2, d3, d4, d5):
-        diceList = [d1, d2, d3, d4, d5]
-        return diceList
+        rollDice = [d1, d2, d3, d4, d5]
+        return rollDice
 
     @staticmethod
-    def chance(diceList):
+    def chance(rollDice):
         points = 0
-        for dice in diceList:
+        for dice in rollDice:
             points += dice
         return points
 
     @staticmethod
-    def yatzy(diceList):
-        if diceList.count(diceList[0]) != Yatzy.FIVE:
+    def yatzy(rollDice):
+        if rollDice.count(rollDice[0]) != Yatzy.FIVE:
             return 0
         return 50
 
     @staticmethod
-    def ones(diceList):
+    def ones(rollDice):
         points = 0
-        for dice in diceList:
+        for dice in rollDice:
             if dice == Yatzy.ONE:
                 points += Yatzy.ONE
         return points
     
     @staticmethod
-    def twos(diceList):
+    def twos(rollDice):
         points = 0
-        for dice in diceList:
+        for dice in rollDice:
             if dice == Yatzy.TWO:
                 points += Yatzy.TWO
         return points
     
     @staticmethod
-    def threes(diceList):
+    def threes(rollDice):
         points = 0
-        for dice in diceList:
+        for dice in rollDice:
             if dice == Yatzy.THREE:
                 points += Yatzy.THREE
         return points
     
     @staticmethod
-    def fours(diceList):
+    def fours(rollDice):
         points = 0
-        for dice in diceList:
+        for dice in rollDice:
             if dice == Yatzy.FOUR:
                 points += Yatzy.FOUR
         return points
     
     @staticmethod
-    def fives(diceList):
+    def fives(rollDice):
         points = 0
-        for dice in diceList:
+        for dice in rollDice:
             if dice == Yatzy.FIVE:
                 points += Yatzy.FIVE
         return points
     
     @staticmethod
-    def sixes(diceList):
+    def sixes(rollDice):
         points = 0
-        for dice in diceList:
+        for dice in rollDice:
             if dice == Yatzy.SIX:
                 points += Yatzy.SIX
         return points
 
     @staticmethod
-    def score_pair(diceList):
+    def score_pair(rollDice):
         for num in range(6,0,-1):
-            if diceList.count(num) >= Yatzy.TWO:
+            if rollDice.count(num) >= Yatzy.TWO:
                 return num * Yatzy.TWO
         return 0
             
     @staticmethod
-    def two_pair(diceList):
+    def two_pair(rollDice):
         points = 0
-        counter = 0
+        amountPairs = 0
         for num in range(6,0,-1):
-            if diceList.count(num) >= Yatzy.TWO:
+            if rollDice.count(num) >= Yatzy.TWO:
                 points += num * Yatzy.TWO
-                counter += Yatzy.ONE
-            elif counter == Yatzy.TWO:
+                amountPairs += Yatzy.ONE
+            if amountPairs == Yatzy.TWO:
                 return points
         return 0
     
     @staticmethod
-    def three_of_a_kind(diceList):
-        for dice in diceList:
-            if diceList.count(dice) >= Yatzy.THREE:
-                return(dice * Yatzy.THREE)
+    def three_of_a_kind(rollDice):
+        for dice in rollDice:
+            if rollDice.count(dice) >= Yatzy.THREE:
+                return dice * Yatzy.THREE 
         return 0
     
     @staticmethod
-    def four_of_a_kind(diceList):
-        for dice in diceList:
-            if diceList.count(diceList[0]) < Yatzy.FOUR and diceList.count(diceList[1]) < Yatzy.FOUR:
-                return 0
-            else:
-                return(dice * Yatzy.FOUR)
+    def four_of_a_kind(rollDice):
+        for dice in rollDice:
+            if rollDice.count(dice) >= Yatzy.FOUR:
+                return dice * Yatzy.FOUR
+        return 0
 
     import collections
     @staticmethod
-    def smallStraight(diceList):
-        if Yatzy.collections.Counter(diceList) == Yatzy.collections.Counter(range(1,6)):
+    def smallStraight(rollDice):
+        if Yatzy.collections.Counter(rollDice) == Yatzy.collections.Counter(range(1,6)):
             return 15
         return 0
 
     @staticmethod
-    def largeStraight(diceList):
-        if Yatzy.collections.Counter(diceList) == Yatzy.collections.Counter(range(2,7)):
+    def largeStraight(rollDice):
+        if Yatzy.collections.Counter(rollDice) == Yatzy.collections.Counter(range(2,7)):
             return 20
         return 0
     
     @staticmethod
-    def fullHouse(diceList):
-        flag = False
-        for dice in diceList:
-            if diceList.count(dice) == Yatzy.THREE:
-                flag = True
+    def fullHouse(rollDice):
+        isTrio = False
+        for dice in rollDice:
+            if rollDice.count(dice) == Yatzy.THREE:
+                isTrio = True
                 break
-        for otherDice in diceList:
-            if flag and diceList.count(otherDice) == Yatzy.TWO:
+        for otherDice in rollDice:
+            if isTrio and rollDice.count(otherDice) == Yatzy.TWO:
                     return (dice * Yatzy.THREE + otherDice * Yatzy.TWO)
         return 0
+
+
